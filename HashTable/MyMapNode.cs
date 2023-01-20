@@ -28,19 +28,12 @@ namespace HashTable
             }
             return default(V);
         }
-
         protected int GetArrayPosition(K key) 
         {                                    
             int position = key.GetHashCode() % size;//In pdf we have formula i.e HashCode = k%m
             return Math.Abs(position);// Abs is Absolute function to show Key value index(post).
         }
-        public void Add(K key, V value)
-        {
-            int position = GetArrayPosition(key);  // |-5| =5 |3|=3 |-3|=3
-            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
-            KeyValue<K, V> item = new KeyValue<K, V>() { Key = key, Value = value };
-            linkedList.AddLast(item);
-        }
+        
        
         protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
         {
@@ -52,7 +45,34 @@ namespace HashTable
             }
             return linkedList;
         }
-        
+        public void Add(K key, V value)
+        {
+            int position = GetArrayPosition(key);  // |-5| =5 |3|=3 |-3|=3
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            KeyValue<K, V> item = new KeyValue<K, V>() { Key = key, Value = value };
+            linkedList.AddLast(item);
+        }
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            bool itemFound = false;
+            KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    itemFound = true;
+                    foundItem = item;
+                }
+            }
+            if (itemFound)
+            {
+                linkedList.Remove(foundItem);
+            }
+        }
+
+
 
         public struct KeyValue<k, v> //step:2here structure is data type.
         {

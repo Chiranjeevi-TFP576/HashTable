@@ -30,27 +30,28 @@
             //string hash11 = hash.Get("0");
             //Console.WriteLine("10th index value: " + hash11);
 
-            string Paragraph = "“Paranoids are not paranoid because they are " +
-              "paranoid but because they keep putting themselves deliberately into" +
-              " paranoid avoidable situations";
-            string[] letters = Paragraph.ToLower().Split(" ");
+            //string Paragraph = "“Paranoids are not paranoid because they are " +
+            //"paranoid but because they keep putting themselves deliberately into" +
+            //" paranoid avoidable situations";
+            //string[] letters = Paragraph.ToLower().Split(" ");
 
-            foreach (string word in letters)
-            {
-                int value = hash.Get(word);
-                if (value == default)
-                {
-                    value = 1;
-                }
-                else value += 1;
-                hash.Add(word, value);
-            }
-            int frequency1 = hash.Get("they");
-            Console.WriteLine(frequency1);
+            //foreach (string word in letters)
+            //{
+            //    int value = hash.Get(word);
+            //    if (value == default)
+            //    {
+            //        value = 1;
+            //    }
+            //    else value += 1;
+            //    hash.Add(word, value);
+            //}
+            //int frequency1 = hash.Get("they");
+            //Console.WriteLine(frequency1);
+
+            hash.Remove("avoidable");
+            int frequency2 = hash.Get("avoidable");
+            Console.WriteLine(frequency2);
         }
-
-
-
 
 
 
