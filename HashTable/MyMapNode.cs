@@ -41,6 +41,7 @@ namespace HashTable
             KeyValue<K, V> item = new KeyValue<K, V>() { Key = key, Value = value };
             linkedList.AddLast(item);
         }
+       
         protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
         {
             LinkedList<KeyValue<K, V>> linkedList = items[position];
@@ -51,6 +52,7 @@ namespace HashTable
             }
             return linkedList;
         }
+        
 
         public struct KeyValue<k, v> //step:2here structure is data type.
         {
